@@ -1,0 +1,28 @@
+@startuml
+start
+
+:User opens app;
+:Enter username/password;
+:Send request to Login.php;
+
+if (Valid credentials?) then (yes)
+    :Show dashboard;
+    :Choose action;
+
+    if (Add Color?) then (yes)
+        :Enter color;
+        :Send to AddColor.php;
+        :Store in database;
+    else (Search Colors)
+        :Enter search term;
+        :Send to SearchColors.php;
+        :Display results;
+    endif
+
+else (no)
+    :Show error;
+    stop
+endif
+
+stop
+@enduml
