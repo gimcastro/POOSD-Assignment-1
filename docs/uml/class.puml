@@ -1,0 +1,50 @@
+@startuml
+
+class Frontend {
+    +login()
+    +addColor()
+    +searchColors()
+}
+
+class User {
+    +id : int
+    +firstName : string
+    +lastName : string
+    +login : string
+    +password : string
+}
+
+class Color {
+    +id : int
+    +name : string
+    +userId : int
+}
+
+class LoginAPI {
+    +login(username, password)
+}
+
+class AddColorAPI {
+    +addColor(userId, colorName)
+}
+
+class SearchColorsAPI {
+    +search(userId, searchTerm)
+}
+
+class Database {
+    +connect()
+    +query()
+}
+
+Frontend --> LoginAPI
+Frontend --> AddColorAPI
+Frontend --> SearchColorsAPI
+
+LoginAPI --> Database
+AddColorAPI --> Database
+SearchColorsAPI --> Database
+
+User "1" -- "many" Color : owns
+
+@enduml
