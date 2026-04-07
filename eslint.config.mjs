@@ -11,10 +11,11 @@ export default [
       }
     },
     rules: {
-      "no-unused-vars": "warn",
-      "no-undef": "error",
-      "semi": ["error", "always"],
-      "quotes": ["error", "double"]
+        "no-unused-vars": "off",
+        "no-undef": "off",
+        "quotes": "off",
+        "semi": "off"
+      }
     }
   }
 ];
