@@ -1,0 +1,38 @@
+name: Colors CI
+on:
+  push:
+  pull_request:
+
+jobs:
+  check-code:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Clone repo
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install packages
+        run: npm install
+
+      - name: Lint HTML files
+        run: |
+          for file in $(find . -type f -name "*.html" ! -path "./node_modules/*"); do
+            npx htmlhint "$file"
+          done
+
+      - name: Lint CSS files
+        run: |
+          for file in $(find . -type f -name "*.css" ! -path "./node_modules/*"); do
+            npx stylelint "$file"
+          done
+
+      - name: Lint JS files
+        run: |
+          for file in $(find . -type f -name "*.js" ! -path "./node_modules/*"); do
+            npx eslint "$file"
+          done
