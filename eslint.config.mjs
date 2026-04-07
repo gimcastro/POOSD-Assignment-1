@@ -15,7 +15,6 @@ export default [
         "no-undef": "off",
         "quotes": "off",
         "semi": "off"
-      }
     }
   }
 ];
